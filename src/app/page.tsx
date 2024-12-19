@@ -1,8 +1,8 @@
-import LoginForm from "@/app/login";
+import LoginForm from "@/components/LoginForm";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-1 items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <LoginForm />
     </div>
   );

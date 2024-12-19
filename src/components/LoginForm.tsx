@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Mail, Lock } from "lucide-react";
+import Link from "next/link";
 
 export default function LoginForm() {
   return (
@@ -59,8 +60,8 @@ export default function LoginForm() {
         <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
           ログイン
         </Button>
-        <Button variant="link" className="text-sm">
-          パスワードをお忘れですか？
+        <Button variant="link" asChild className="text-sm">
+          <Link href="/password-reset">パスワードをお忘れですか？</Link>
         </Button>
       </CardFooter>
     </Card>
