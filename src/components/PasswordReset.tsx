@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,6 +23,10 @@ export default function PasswordReset() {
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    setIsValidEmail(email.includes("@") && email.includes("."));
+  }, [email]);
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
