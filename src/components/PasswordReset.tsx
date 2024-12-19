@@ -21,6 +21,7 @@ type Step = "email" | "confirmation" | "newPassword" | "success";
 export default function PasswordReset() {
   const [currentStep, setCurrentStep] = useState<Step>("email");
   const [email, setEmail] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState(false);
   const router = useRouter();
 
   const handleEmailSubmit = (e: React.FormEvent) => {
@@ -72,11 +73,21 @@ export default function PasswordReset() {
                     required
                     className="w-full pl-10"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      setIsValidEmail(
+                        e.target.value.includes("@") &&
+                          e.target.value.includes(".")
+                      );
+                    }}
                   />
                 </div>
               </div>
-              <Button type="submit" className="w-full">
+              <Button
+                type="submit"
+                className="w-full disabled:bg-slate-700"
+                disabled={!isValidEmail}
+              >
                 リセットリンクを送信
               </Button>
             </form>
